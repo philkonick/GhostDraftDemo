@@ -1,0 +1,28 @@
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin-bottom: 24px;
+  }
+}
+
+mat-expansion-panel-header {
+  background: #eaeef6 !important;
+  --mat-expansion-header-expanded-state-height: 48px;
+}
+
+mat-panel-title {
+  color: #0142db;
+}
+
+div.buttons {
+  margin-top: 24px;
+  display: flex;
+  column-gap: 24px;
+  justify-content: end;
+
+  & > button {
+    min-width: 150px;
+  }
+}

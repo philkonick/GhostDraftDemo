@@ -1,0 +1,142 @@
+<mat-dialog-content>
+  <h2>Add New Template</h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput placeholder="A descriptive title for internal use..." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      placeholder="Type or paste your details here..."
+    ></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="tags-field">
+    <mat-label>Tags</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Fruit selection">
+      <mat-chip-row *ngFor="let tag of tags" (removed)="remove(tag)">
+        {{ tag }}
+        <button matChipRemove [attr.aria-label]="'remove ' + tag">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    </mat-chip-grid>
+    <input
+      placeholder="Search..."
+      #tagInput
+      [formControl]="tagCtrl"
+      [matChipInputFor]="chipGrid"
+      [matAutocomplete]="auto"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="selected($event)"
+    >
+      <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+        {{ tag }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-accordion multi>
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Identification </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Form Name</mat-label>
+        <input matInput placeholder="e.g. Tax Certificate..." />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Form Number</mat-label>
+        <input matInput placeholder="e.g. IRP5..." />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Edition</mat-label>
+        <input matInput placeholder="e.g. MM/YY..." />
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Classification </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Document Type</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let tag of allTags" [value]="tag">{{
+            tag
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Dynamic Nature</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let tag of allTags" [value]="tag">{{
+            tag
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Line of Business</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let tag of allTags" [value]="tag">{{
+            tag
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Division</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let tag of allTags" [value]="tag">{{
+            tag
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Product</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let tag of allTags" [value]="tag">{{
+            tag
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Program</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let tag of allTags" [value]="tag">{{
+            tag
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Origination</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let tag of allTags" [value]="tag">{{
+            tag
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <div class="buttons">
+    <button mat-raised-button color="primary" mat-dialog-close>Ok</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+  </div>
+</mat-dialog-content>
