@@ -103,6 +103,15 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+th {
+  background: #eaeef6 !important;
+  color: #0142db;
+}
+
+tr:hover {
+  background: #fafbfd !important;
+}
+
 mat-dialog-container {
   max-width: 800px !important;
 }
