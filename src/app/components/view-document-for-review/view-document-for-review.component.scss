@@ -1,0 +1,33 @@
+.reviewer-box {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+h3 {
+  display: inline-block;
+}
+
+h4.status {
+  background: #ccc;
+  border-radius: 20px;
+  padding: 5px 15px;
+  display: inline-block;
+  margin-bottom: 15px;
+  float: right;
+
+  &.approved {
+    background: green;
+    color: white;
+  }
+
+  &.rejected {
+    background: red;
+    color: white;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
